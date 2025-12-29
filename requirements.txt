@@ -1,0 +1,35 @@
+# Core ML/AI Libraries
+torch>=2.0.0
+torchvision>=0.15.0
+diffusers>=0.21.0
+transformers>=4.30.0
+accelerate>=0.20.0
+safetensors>=0.3.0
+
+# Image Processing
+pillow>=9.5.0
+opencv-python>=4.7.0
+numpy>=1.24.0
+
+# Configuration
+pyyaml>=6.0
+
+# Utilities
+tqdm>=4.65.0
+imageio>=2.28.0
+imageio-ffmpeg>=0.4.8
+
+# Upscaling (Real-ESRGAN)
+realesrgan>=0.3.0
+basicsr>=1.4.2
+
+# Performance Optimization (optional but recommended)
+xformers>=0.0.20; sys_platform != "darwin" and platform_machine != "arm64"
+# Note: xformers not available on macOS/ARM, install separately if needed
+
+# HuggingFace Hub (for downloading models)
+huggingface-hub>=0.16.0
+
+# Additional utilities
+einops>=0.6.0  # Used by some diffusion models
+
