@@ -9,14 +9,14 @@ sdxl:
   # lora_path: "/path/to/lora/directory"  # Directory containing LoRA files
   # lora_path: "username/lora-name"  # HuggingFace LoRA ID
   lora_scale: 1.0  # LoRA strength (0.0-2.0)
-  device: "cuda"  # or "cpu"
-  dtype: "float16"  # or "float32" (use float32 if you have memory issues)
+  device: "cuda"  # Using CUDA for NVIDIA GB10 GPU
+  dtype: "float16"  # Using float16 for memory efficiency (GPU has 119GB VRAM, but float16 is still recommended for speed)
   
 # Image-to-Image Configuration
 img2img:
-  strength: 0.75  # How much to transform the image (0.0-1.0). Lower = more faithful to original
-  guidance_scale: 7.5  # How closely to follow the prompt (1-20)
-  num_inference_steps: 50  # More steps = better quality but slower
+  strength: 0.20  # How much to transform the image (0.0-1.0). Lower = more faithful to original (0.15-0.25 for maximum photorealism, minimal transformation)
+  guidance_scale: 5.0  # How closely to follow the prompt (1-20, lower for more natural/photorealistic, closer to original)
+  num_inference_steps: 75  # More steps = better quality but slower (increased for high quality)
   seed: null  # Set to a number for reproducibility (e.g., 42)
   
 # Image Upscaling Configuration
@@ -34,11 +34,11 @@ i2v:
   svd:
     model_path: "stabilityai/stable-video-diffusion-img2vid"  # HuggingFace model ID
     # Alternative: "stabilityai/stable-video-diffusion-img2vid-xt" for extended version
-    num_frames: 14  # Number of frames to generate (SVD supports 14 or 25)
+    num_frames: 25  # Number of frames to generate (SVD supports 14 or 25, using 25 for smoother motion)
     fps: 7  # Frames per second
-    motion_bucket_id: 127  # Motion amount (1-255, higher = more motion)
+    motion_bucket_id: 180  # Motion amount (1-255, higher = more motion, increased for standing up action)
     noise_aug_strength: 0.02  # Noise augmentation strength
-    decode_chunk_size: 2  # Process frames in chunks for memory efficiency
+    decode_chunk_size: 2  # Process frames in chunks for memory efficiency (can increase with 119GB VRAM)
     
   # Wan2.2 I2V Configuration - Requires custom setup
   wan:

@@ -121,33 +121,57 @@ class VideoUpscaler:
         if not frames:
             raise ValueError("No frames to save")
         
-        # Get frame dimensions
-        width, height = frames[0].size
-        
-        # Create video writer
-        # Convert codec name to fourcc format
-        codec_map = {
-            'libx264': 'mp4v',
-            'libx265': 'HEVC',
-            'mjpeg': 'MJPG',
-            'xvid': 'XVID'
-        }
-        fourcc_code = codec_map.get(codec.lower(), 'mp4v')
-        fourcc = cv2.VideoWriter_fourcc(*fourcc_code)
-        out = cv2.VideoWriter(
-            output_path,
-            fourcc,
-            fps,
-            (width, height)
-        )
-        
-        logger.info(f"Saving video to {output_path} ({width}x{height}, {fps} fps)...")
-        
-        for frame in frames:
-            # Convert PIL to OpenCV format
-            frame_cv = cv2.cvtColor(np.array(frame), cv2.COLOR_RGB2BGR)
-            out.write(frame_cv)
-        
-        out.release()
-        logger.info("Video saved successfully")
+        # Use imageio-ffmpeg for proper H.264 encoding
+        try:
+            import imageio
+            import imageio_ffmpeg
+            
+            logger.info(f"Saving video to {output_path} ({frames[0].size[0]}x{frames[0].size[1]}, {fps} fps)...")
+            
+            # Convert frames to numpy arrays
+            frame_arrays = [np.array(frame) for frame in frames]
+            
+            # Write video using imageio with proper codec
+            # Use ffmpeg plugin for better compatibility
+            writer = imageio.get_writer(
+                output_path,
+                fps=fps,
+                codec='libx264',
+                quality=8,  # High quality (0-10, higher is better)
+                pixelformat='yuv420p',  # Ensures compatibility
+                macro_block_size=None,  # Auto-detect
+                ffmpeg_params=['-preset', 'slow', '-crf', '18']  # High quality encoding
+            )
+            
+            for frame_array in frame_arrays:
+                writer.append_data(frame_array)
+            
+            writer.close()
+            logger.info("Video saved successfully")
+            
+        except Exception as e:
+            logger.warning(f"imageio-ffmpeg failed: {e}, falling back to OpenCV")
+            # Fallback to OpenCV
+            width, height = frames[0].size
+            
+            # Use H.264 codec properly
+            fourcc = cv2.VideoWriter_fourcc(*'avc1')  # H.264 codec
+            out = cv2.VideoWriter(
+                output_path,
+                fourcc,
+                fps,
+                (width, height)
+            )
+            
+            if not out.isOpened():
+                # Try alternative codec
+                fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+                out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
+            
+            for frame in frames:
+                frame_cv = cv2.cvtColor(np.array(frame), cv2.COLOR_RGB2BGR)
+                out.write(frame_cv)
+            
+            out.release()
+            logger.info("Video saved successfully (using OpenCV fallback)")
 

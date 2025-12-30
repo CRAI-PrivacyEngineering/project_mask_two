@@ -63,22 +63,21 @@ class ImageUpscaler:
     def _init_realesrgan(self, model_name: str):
         """Initialize Real-ESRGAN upscaler"""
         # Map model names to actual model files
+        # Note: Real-ESRGAN x4plus can be used for 2x by setting scale=2, but we need the right model
         model_mapping = {
             "RealESRGAN_x4plus": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth",
             "RealESRGAN_x4plus_anime": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.4/RealESRGAN_x4plus_anime_6B.pth",
         }
         
-        # Determine model architecture based on scale factor
-        if self.scale_factor == 4:
-            model = RRDBNet(num_in_block=5, num_out_block=4, num_feat=64, 
-                          num_block=23, num_grow_ch=32, scale=4)
-        elif self.scale_factor == 2:
-            model = RRDBNet(num_in_block=5, num_out_block=4, num_feat=64, 
-                          num_block=23, num_grow_ch=32, scale=2)
-        else:
-            raise ValueError(f"Unsupported scale factor: {self.scale_factor}. Supported: 2, 4")
-        
+        # Real-ESRGAN x4plus model uses scale=4 architecture
+        # For 2x upscaling, we still use the 4x model architecture but RealESRGANer handles the scale
+        # The checkpoint is trained for 4x, so we must use scale=4 in the model architecture
+        model = RRDBNet(num_in_ch=3, num_out_ch=3, scale=4, num_feat=64, 
+                      num_block=23, num_grow_ch=32)
         model_url = model_mapping.get(model_name, model_mapping["RealESRGAN_x4plus"])
+        
+        if self.scale_factor not in [2, 4]:
+            raise ValueError(f"Unsupported scale factor: {self.scale_factor}. Supported: 2, 4")
         
         # Initialize upsampler
         # RealESRGANer will download the model automatically if not present
@@ -89,7 +88,8 @@ class ImageUpscaler:
             tile=0,  # Set to 0 for no tiling, increase if OOM
             tile_pad=10,
             pre_pad=0,
-            half=self.device == "cuda" and torch.cuda.is_available()
+            half=self.device == "cuda" and torch.cuda.is_available(),
+            device=self.device
         )
         
         logger.info(f"Real-ESRGAN initialized with {model_name} (scale: {self.scale_factor}x)")

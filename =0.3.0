@@ -1,0 +1,8 @@
+Collecting realesrgan
+  Using cached realesrgan-0.3.0-py3-none-any.whl.metadata (17 kB)
+Collecting basicsr>=1.4.2 (from realesrgan)
+  Using cached basicsr-1.4.2.tar.gz (172 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'error'

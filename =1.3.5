@@ -1,0 +1,120 @@
+Collecting facexlib
+  Downloading facexlib-0.3.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting gfpgan
+  Downloading gfpgan-1.3.8-py3-none-any.whl.metadata (12 kB)
+Collecting filterpy (from facexlib)
+  Downloading filterpy-1.4.5.zip (177 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting numba (from facexlib)
+  Downloading numba-0.63.1-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (2.9 kB)
+Requirement already satisfied: numpy in ./venv/lib/python3.14/site-packages (from facexlib) (2.2.6)
+Requirement already satisfied: opencv-python in ./venv/lib/python3.14/site-packages (from facexlib) (4.12.0.88)
+Requirement already satisfied: Pillow in ./venv/lib/python3.14/site-packages (from facexlib) (12.0.0)
+Requirement already satisfied: scipy in ./venv/lib/python3.14/site-packages (from facexlib) (1.16.3)
+Requirement already satisfied: torch in ./venv/lib/python3.14/site-packages (from facexlib) (2.9.1+cu130)
+Requirement already satisfied: torchvision in ./venv/lib/python3.14/site-packages (from facexlib) (0.24.1)
+Requirement already satisfied: tqdm in ./venv/lib/python3.14/site-packages (from facexlib) (4.67.1)
+Requirement already satisfied: basicsr>=1.4.2 in ./venv/lib/python3.14/site-packages (from gfpgan) (1.4.2)
+Requirement already satisfied: lmdb in ./venv/lib/python3.14/site-packages (from gfpgan) (1.7.5)
+Requirement already satisfied: pyyaml in ./venv/lib/python3.14/site-packages (from gfpgan) (6.0.3)
+Requirement already satisfied: tb-nightly in ./venv/lib/python3.14/site-packages (from gfpgan) (2.21.0a20251023)
+Requirement already satisfied: yapf in ./venv/lib/python3.14/site-packages (from gfpgan) (0.43.0)
+Requirement already satisfied: addict in ./venv/lib/python3.14/site-packages (from basicsr>=1.4.2->gfpgan) (2.4.0)
+Requirement already satisfied: future in ./venv/lib/python3.14/site-packages (from basicsr>=1.4.2->gfpgan) (1.0.0)
+Requirement already satisfied: requests in ./venv/lib/python3.14/site-packages (from basicsr>=1.4.2->gfpgan) (2.32.5)
+Requirement already satisfied: scikit-image in ./venv/lib/python3.14/site-packages (from basicsr>=1.4.2->gfpgan) (0.26.0)
+Requirement already satisfied: filelock in ./venv/lib/python3.14/site-packages (from torch->facexlib) (3.20.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (4.15.0)
+Requirement already satisfied: setuptools in ./venv/lib/python3.14/site-packages (from torch->facexlib) (70.2.0)
+Requirement already satisfied: sympy>=1.13.3 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (3.6.1)
+Requirement already satisfied: jinja2 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (3.1.6)
+Requirement already satisfied: fsspec>=0.8.5 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (2025.12.0)
+Requirement already satisfied: nvidia-cuda-nvrtc==13.0.48 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (13.0.48)
+Requirement already satisfied: nvidia-cuda-runtime==13.0.48 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (13.0.48)
+Requirement already satisfied: nvidia-cuda-cupti==13.0.48 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (13.0.48)
+Requirement already satisfied: nvidia-cudnn-cu13==9.13.0.50 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (9.13.0.50)
+Requirement already satisfied: nvidia-cublas==13.0.0.19 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (13.0.0.19)
+Requirement already satisfied: nvidia-cufft==12.0.0.15 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (12.0.0.15)
+Requirement already satisfied: nvidia-curand==10.4.0.35 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (10.4.0.35)
+Requirement already satisfied: nvidia-cusolver==12.0.3.29 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (12.0.3.29)
+Requirement already satisfied: nvidia-cusparse==12.6.2.49 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (12.6.2.49)
+Requirement already satisfied: nvidia-cusparselt-cu13==0.8.0 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (0.8.0)
+Requirement already satisfied: nvidia-nccl-cu13==2.27.7 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (2.27.7)
+Requirement already satisfied: nvidia-nvshmem-cu13==3.3.24 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (3.3.24)
+Requirement already satisfied: nvidia-nvtx==13.0.39 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (13.0.39)
+Requirement already satisfied: nvidia-nvjitlink==13.0.39 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (13.0.39)
+Requirement already satisfied: nvidia-cufile==1.15.0.42 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (1.15.0.42)
+Requirement already satisfied: triton==3.5.1 in ./venv/lib/python3.14/site-packages (from torch->facexlib) (3.5.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./venv/lib/python3.14/site-packages (from sympy>=1.13.3->torch->facexlib) (1.3.0)
+Collecting matplotlib (from filterpy->facexlib)
+  Downloading matplotlib-3.10.8-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (52 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.14/site-packages (from jinja2->torch->facexlib) (2.1.5)
+Collecting contourpy>=1.0.1 (from matplotlib->filterpy->facexlib)
+  Downloading contourpy-1.3.3-cp314-cp314-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib->filterpy->facexlib)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib->filterpy->facexlib)
+  Downloading fonttools-4.61.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (114 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib->filterpy->facexlib)
+  Downloading kiwisolver-1.4.9-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl.metadata (6.3 kB)
+Requirement already satisfied: packaging>=20.0 in ./venv/lib/python3.14/site-packages (from matplotlib->filterpy->facexlib) (25.0)
+Collecting pyparsing>=3 (from matplotlib->filterpy->facexlib)
+  Downloading pyparsing-3.3.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting python-dateutil>=2.7 (from matplotlib->filterpy->facexlib)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib->filterpy->facexlib)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting llvmlite<0.47,>=0.46.0dev0 (from numba->facexlib)
+  Downloading llvmlite-0.46.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (5.0 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in ./venv/lib/python3.14/site-packages (from requests->basicsr>=1.4.2->gfpgan) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.14/site-packages (from requests->basicsr>=1.4.2->gfpgan) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./venv/lib/python3.14/site-packages (from requests->basicsr>=1.4.2->gfpgan) (2.6.2)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.14/site-packages (from requests->basicsr>=1.4.2->gfpgan) (2025.11.12)
+Requirement already satisfied: imageio!=2.35.0,>=2.33 in ./venv/lib/python3.14/site-packages (from scikit-image->basicsr>=1.4.2->gfpgan) (2.37.2)
+Requirement already satisfied: tifffile>=2022.8.12 in ./venv/lib/python3.14/site-packages (from scikit-image->basicsr>=1.4.2->gfpgan) (2025.12.20)
+Requirement already satisfied: lazy-loader>=0.4 in ./venv/lib/python3.14/site-packages (from scikit-image->basicsr>=1.4.2->gfpgan) (0.4)
+Requirement already satisfied: absl-py>=0.4 in ./venv/lib/python3.14/site-packages (from tb-nightly->gfpgan) (2.3.1)
+Requirement already satisfied: grpcio>=1.48.2 in ./venv/lib/python3.14/site-packages (from tb-nightly->gfpgan) (1.76.0)
+Requirement already satisfied: markdown>=2.6.8 in ./venv/lib/python3.14/site-packages (from tb-nightly->gfpgan) (3.10)
+Requirement already satisfied: protobuf!=4.24.0,>=3.19.6 in ./venv/lib/python3.14/site-packages (from tb-nightly->gfpgan) (6.33.2)
+Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in ./venv/lib/python3.14/site-packages (from tb-nightly->gfpgan) (0.7.2)
+Requirement already satisfied: werkzeug>=1.0.1 in ./venv/lib/python3.14/site-packages (from tb-nightly->gfpgan) (3.1.4)
+Requirement already satisfied: platformdirs>=3.5.1 in ./venv/lib/python3.14/site-packages (from yapf->gfpgan) (4.5.1)
+Downloading facexlib-0.3.0-py3-none-any.whl (59 kB)
+Downloading gfpgan-1.3.8-py3-none-any.whl (52 kB)
+Downloading matplotlib-3.10.8-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (9.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.6/9.6 MB 59.1 MB/s  0:00:00
+
+Downloading contourpy-1.3.3-cp314-cp314-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (335 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.61.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (5.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 83.8 MB/s  0:00:00
+
+Downloading kiwisolver-1.4.9-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 66.9 MB/s  0:00:00
+
+Downloading pyparsing-3.3.1-py3-none-any.whl (121 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading numba-0.63.1-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (3.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 74.3 MB/s  0:00:00
+
+Downloading llvmlite-0.46.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (55.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 55.1/55.1 MB 100.2 MB/s  0:00:00
+
+Building wheels for collected packages: filterpy
+  Building wheel for filterpy (pyproject.toml): started
+  Building wheel for filterpy (pyproject.toml): finished with status 'done'
+  Created wheel for filterpy: filename=filterpy-1.4.5-py3-none-any.whl size=110545 sha256=8bf15841bccaa7fe14544ea66d18b68b7a7bc1aa79f43cc8904c64a1fbec514e
+  Stored in directory: /home/ashaxted/.cache/pip/wheels/fd/1f/71/2a59e66b44db659c8e854bc7994d857ea45a75d2390565c996
+Successfully built filterpy
+Installing collected packages: six, pyparsing, llvmlite, kiwisolver, fonttools, cycler, contourpy, python-dateutil, numba, matplotlib, filterpy, facexlib, gfpgan
+
+
+Successfully installed contourpy-1.3.3 cycler-0.12.1 facexlib-0.3.0 filterpy-1.4.5 fonttools-4.61.1 gfpgan-1.3.8 kiwisolver-1.4.9 llvmlite-0.46.0 matplotlib-3.10.8 numba-0.63.1 pyparsing-3.3.1 python-dateutil-2.9.0.post0 six-1.17.0
